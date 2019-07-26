@@ -113,7 +113,7 @@ function pow(base, exponent) {
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
     if (!Array.isArray(data)) return [ data ];
-    
+
     let allEles = [];
     data.forEach((ele) => {
         allEles.push(...flatten(ele));
