@@ -33,3 +33,52 @@ countUniqueValues = (arr) => {
     }
     return count;
 }
+
+averagePair = (arr, tar) => {
+    let right = arr.length - 1;
+
+    for(let left = 0; left < arr.length; left++) {
+        let avg = (arr[left] + arr[right]) / 2
+        if (avg === tar) return true;
+        if (avg > tar) right--;
+    }
+
+    return false;
+}
+
+isSubsequence = (str1, str2) => {
+    let i = 0;
+    let j = 0;
+
+    while (j < str2.length){
+        if (str2[j] === str1[i]) i++;
+        if (i === str1.length) return true;
+        j++;
+    }
+
+    return false;
+}
+
+maxSubarraySum = (arr, subLength) => {
+    if (arr.length < subLength) return null;
+
+    let max = 0;
+
+    for (let i = 0; i < subLength; i++){
+        max += arr[i]
+    }
+
+    let temp = max;
+
+    for (let i = subLength; i < arr.length; i++) {
+        temp += arr[i] - arr[i - subLength];
+        if (temp > max) {
+            max = temp;
+        }
+    }
+
+    return max;
+}
+
+console.log(maxSubarraySum([100,200,300,400], 2))   //700
+console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4))   //39
